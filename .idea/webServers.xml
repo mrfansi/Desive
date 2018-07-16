@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="69b98a84-1267-47be-8b6d-386578ea8f5e" name="Desive" url="http://dev.eazy-dev.xyz">
+        <fileTransfer host="dev.eazy-dev.xyz" port="2211" rootFolder="/desive" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="2211" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
