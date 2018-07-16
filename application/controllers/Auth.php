@@ -10,6 +10,21 @@ class Auth extends CI_Controller
 
     public function index()
     {
-        $this->load->view('welcome_message');
+        $this->load->view('Home');
+    }
+
+    public function manager()
+    {
+        $this->load->view('Auth_manager');
+    }
+
+    public function gudang()
+    {
+        $this->load->view('Auth_gudang');
+    }
+
+    public function operator()
+    {
+        $this->load->view('Auth_operator');
     }
 }
