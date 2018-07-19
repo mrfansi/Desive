@@ -18,9 +18,28 @@ class Auth extends CI_Controller
         $this->load->view('Auth_manager');
     }
 
-    public function gudang()
+    public function gudang($action = '')
     {
-        $this->load->view('Auth_gudang');
+        if ($action == '') {
+            $this->load->view('Auth_gudang');
+        } elseif ($action == 'login') {
+            $this->load->model('Model_access', 'access');
+
+            $data = array(
+                'username' => $this->input->post('username'),
+                'password' => $this->input->post('password'),
+            );
+
+            if ($this->access->login($data)) {
+                redirect('gudang');
+            } else {
+                $this->gudang();
+            }
+        } elseif ($action == 'logout') {
+            $this->load->model('Model_access', 'access');
+            $this->access->logout();
+        }
+
     }
 
     public function operator()

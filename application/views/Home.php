@@ -21,7 +21,7 @@
     <div class="d-select m-auto">
         <div class="row">
             <div class="col">
-                <a href="login.html" class="d-link">
+                <a href="<?= site_url('auth/manager'); ?>" class="d-link">
                     <div class="border d-bg-hover">
                         <i class="fas fa-user-tie fa-5x p-4"></i>
                         <h5 class="card-title">Manager</h5>
@@ -29,7 +29,7 @@
                 </a>
             </div>
             <div class="col">
-                <a href="" class="d-link">
+                <a href="<?= site_url('auth/gudang'); ?>" class="d-link">
                     <div class="border d-bg-hover">
                         <i class="fas fa-building fa-5x p-4"></i>
                         <h5 class="card-title">Storage</h5>
@@ -37,7 +37,7 @@
                 </a>
             </div>
             <div class="col">
-                <a href="" class="d-link">
+                <a href="<?= site_url('auth/operator'); ?>" class="d-link">
                     <div class="border d-bg-hover">
                         <i class="fas fa-users fa-5x p-4"></i>
                         <h5 class="card-title">Operation</h5>

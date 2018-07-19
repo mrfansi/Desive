@@ -89,4 +89,10 @@ a.d-pagi:hover {
     color: #555;
 }
 
+.d-btn {
+    border-radius: 0;
+}
 
+.d-form-control {
+    border-radius: 0;
+}
