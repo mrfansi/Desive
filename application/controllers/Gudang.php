@@ -202,6 +202,8 @@ class Gudang extends CI_Controller
 
         switch ($action) {
             case 'tambah':
+                $this->load->model('model_supplier');
+                $this->load->model('model_user');
                 $this->load->view('Gudang_masuk_barang_tambah');
                 break;
             case 'tambah_simpan':
