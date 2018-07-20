@@ -54,5 +54,6 @@ $route['gudang/master_barang/tambah'] = 'gudang/crud_master_barang/tambah';
 $route['gudang/master_barang/tambah_simpan'] = 'gudang/crud_master_barang/tambah_simpan';
 $route['gudang/master_barang/edit/(:num)'] = 'gudang/crud_master_barang/edit/$1';
 $route['gudang/master_barang/edit/simpan'] = 'gudang/crud_master_barang/edit_simpan';
+$route['gudang/master_barang/delete/(:num)'] = 'gudang/crud_master_barang/delete/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -109,6 +109,20 @@ class Gudang extends CI_Controller
 
                 $this->crud_master_barang('edit', $data['id_bahan']);
                 break;
+
+            case 'delete':
+                if ($id == '') {
+                    redirect('gudang/master_barang');
+                }
+
+                if ($this->model_bahan->delete($id)) {
+                    $this->session->set_flashdata('berhasil', 'Data berhasil dihapus');
+                } else {
+                    $this->session->set_flashdata('gagal', 'Data gagal dihapus');
+                }
+
+                redirect('gudang/master_barang');
+                break;
         }
     }
 

@@ -48,6 +48,24 @@
                 </nav>
             </div>
             <div class="col-9 border-left pl-5">
+                <?php if (isset($_SESSION['berhasil'])): ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?= $_SESSION['berhasil']; ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (isset($_SESSION['gagal'])): ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <?= $_SESSION['gagal']; ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
                 <div class="mb-4 text-white">
                     <p class="h2">Master Barang</p>
                     <a href="<?= site_url('gudang/master_barang/tambah'); ?>"
