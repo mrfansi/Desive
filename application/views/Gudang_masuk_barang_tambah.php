@@ -104,12 +104,18 @@
                         <label for="id_supplier">Supplier</label>
                         <select class="form-control" name="id_supplier" id="id_supplier">
                             <option value="">Pilih Supplier</option>
+                            <?php foreach ($suppliers as $s): ?>
+                                <option value="<?= $s->id_supplier; ?>"><?= $s->nama_supplier; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="id_user">User</label>
                         <select class="form-control" name="id_user" id="id_user">
                             <option value="">Pilih User</option>
+                            <?php foreach ($users as $u): ?>
+                                <option value="<?= $u->id_user; ?>"><?= $u->nama_user; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="form-group">

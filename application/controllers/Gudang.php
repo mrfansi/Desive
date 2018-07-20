@@ -204,13 +204,19 @@ class Gudang extends CI_Controller
             case 'tambah':
                 $this->load->model('model_supplier');
                 $this->load->model('model_user');
-                $this->load->view('Gudang_masuk_barang_tambah');
+
+                $data['suppliers'] = $this->model_supplier->all()->result();
+                $data['users'] = $this->model_user->all()->result();
+                $this->load->view('Gudang_masuk_barang_tambah', $data);
                 break;
             case 'tambah_simpan':
                 $data = array(
-                    'nama_supplier' => $this->input->post('nama_supplier'),
-                    'alamat' => $this->input->post('alamat'),
-                    'telp' => $this->input->post('telp'),
+                    'tgl_masuk' => $this->input->post('tgl_masuk'),
+                    'kode_jenis' => $this->input->post('kode_jenis'),
+                    'nama_bahan' => $this->input->post('nama_bahan'),
+                    'jumlah' => $this->input->post('jumlah'),
+                    'id_supplier' => $this->input->post('id_supplier'),
+                    'id_user' => $this->input->post('id_user'),
                 );
 
                 if ($this->model_brg_masuk->insert($data)) {
@@ -228,19 +234,24 @@ class Gudang extends CI_Controller
 
                 $member = $this->model_brg_masuk->get($id);
 
+                $data['tgl_masuk'] = $member->tgl_masuk;
+                $data['kode_jenis'] = $member->kode_jenis;
+                $data['nama_bahan'] = $member->nama_bahan;
+                $data['jumlah'] = $member->jumlah;
                 $data['id_supplier'] = $member->id_supplier;
-                $data['nama_supplier'] = $member->nama_supplier;
-                $data['alamat'] = $member->alamat;
-                $data['telp'] = $member->telp;
+                $data['id_user'] = $member->id_user;
 
                 $this->load->view('Gudang_masuk_barang_edit', $data);
                 break;
             case 'edit_simpan':
                 $data = array(
+                    'id_barang_m' => $this->input->post('id_barang_m'),
+                    'tgl_masuk' => $this->input->post('tgl_masuk'),
+                    'kode_jenis' => $this->input->post('kode_jenis'),
+                    'nama_bahan' => $this->input->post('nama_bahan'),
+                    'jumlah' => $this->input->post('jumlah'),
                     'id_supplier' => $this->input->post('id_supplier'),
-                    'nama_supplier' => $this->input->post('nama_supplier'),
-                    'alamat' => $this->input->post('alamat'),
-                    'telp' => $this->input->post('telp'),
+                    'id_user' => $this->input->post('id_user'),
                 );
 
                 if ($this->model_brg_masuk->update($data)) {
@@ -249,7 +260,7 @@ class Gudang extends CI_Controller
                     $this->session->set_flashdata('gagal', 'Data gagal disimpan');
                 }
 
-                $this->crud_masuk_barang('edit', $data['id_supplier']);
+                $this->crud_masuk_barang('edit', $data['id_barang_m']);
                 break;
 
             case 'delete':
