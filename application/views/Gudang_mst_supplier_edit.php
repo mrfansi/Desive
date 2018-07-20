@@ -37,10 +37,10 @@
                     <a class="nav-link btn-outline-light" href="<?= site_url('gudang'); ?>">Home</a>
                     <a class="nav-link btn-outline-light" href="<?= site_url('gudang/master_barang'); ?>">Master
                         Barang</a>
-                    <a class="nav-link btn-outline-light" href="<?= site_url('gudang/master_supplier'); ?>">Master
+                    <a class="nav-link btn-outline-light active" href="<?= site_url('gudang/master_supplier'); ?>">Master
                         Supplier</a>
-                    <a class="nav-link btn-outline-light active" href="<?= site_url('gudang/masuk_barang'); ?>">Input
-                        Masuk Barang</a>
+                    <a class="nav-link btn-outline-light" href="<?= site_url('gudang/masuk_barang'); ?>">Input Masuk
+                        Barang</a>
                     <a class="nav-link btn-outline-light" href="<?= site_url('gudang/keluar_barang'); ?>">Input Keluar
                         Barang</a>
                     <a class="nav-link btn-outline-light" href="<?= site_url('gudang/retur_barang'); ?>">Input Retur
@@ -67,34 +67,37 @@
                 <?php endif; ?>
 
                 <div class="mb-4 text-white">
-                    <p class="h2">Transaksi Masuk Barang</p>
-                    <a href="<?= site_url('gudang/masuk_barang/tambah'); ?>"
-                       class="btn btn-outline-light btn-sm rounded-0">Tambah Data</a>
+
+                    <p class="h2">Master Supplier</p>
+                    <p class="h5 text-muted">Edit Data</p>
+                    <a href="<?= site_url('gudang/master_supplier'); ?>" class="btn btn-outline-light btn-sm rounded-0">Kembali
+                        ke Menu Master Supplier</a>
+
                 </div>
-                <table class="table table-sm text-white">
-                    <thead>
-                    <tr>
-                        <th scope="col">Tgl. Masuk</th>
-                        <th scope="col">Kode Jenis</th>
-                        <th scope="col">Nama Bahan</th>
-                        <th scope="col">Jumlah</th>
-                        <th scope="col">Supplier</th>
-                        <th scope="col">User</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($members as $member): ?>
-                        <tr>
-                            <td><?= $member->tgl_masuk; ?></td>
-                            <td><?= $member->kode_jenis; ?></td>
-                            <td><?= $member->nama_bahan; ?></td>
-                            <td><?= $member->jumlah; ?></td>
-                            <td><?= $member->id_supplier; ?></td>
-                            <td><?= $member->id_user; ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                    </tbody>
-                </table>
+
+                <form action="simpan" method="post" class="col-8 text-white">
+                    <input type="hidden" name="id_supplier" value="<?= $id_supplier; ?>">
+                    <div class="form-group">
+                        <label for="nama_supplier">Nama Supplier</label>
+                        <input class="form-control" type="text" name="nama_supplier" placeholder="Nama Supplier"
+                               value="<?= $nama_supplier; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="alamat">Alamat</label>
+                        <input class="form-control" type="text" name="alamat" placeholder="Alamat"
+                               value="<?= $alamat; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="telp">Telepon</label>
+                        <input class="form-control" type="text" name="telp" placeholder="Telepon" value="<?= $telp; ?>">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-outline-light btn-sm">Submit</button>
+                        <button type="reset" class="btn btn-outline-light btn-sm">Clear</button>
+
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>

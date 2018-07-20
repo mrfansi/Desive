@@ -55,5 +55,19 @@ $route['gudang/master_barang/tambah_simpan'] = 'gudang/crud_master_barang/tambah
 $route['gudang/master_barang/edit/(:num)'] = 'gudang/crud_master_barang/edit/$1';
 $route['gudang/master_barang/edit/simpan'] = 'gudang/crud_master_barang/edit_simpan';
 $route['gudang/master_barang/delete/(:num)'] = 'gudang/crud_master_barang/delete/$1';
+
+$route['gudang/master_supplier/tambah'] = 'gudang/crud_master_supplier/tambah';
+$route['gudang/master_supplier/tambah_simpan'] = 'gudang/crud_master_supplier/tambah_simpan';
+$route['gudang/master_supplier/edit/(:num)'] = 'gudang/crud_master_supplier/edit/$1';
+$route['gudang/master_supplier/edit/simpan'] = 'gudang/crud_master_supplier/edit_simpan';
+$route['gudang/master_supplier/delete/(:num)'] = 'gudang/crud_master_supplier/delete/$1';
+
+$route['gudang/masuk_barang/tambah'] = 'gudang/crud_masuk_barang/tambah';
+$route['gudang/masuk_barang/tambah_simpan'] = 'gudang/crud_masuk_barang/tambah_simpan';
+$route['gudang/masuk_barang/edit/(:num)'] = 'gudang/crud_masuk_barang/edit/$1';
+$route['gudang/masuk_barang/edit/simpan'] = 'gudang/crud_masuk_barang/edit_simpan';
+$route['gudang/masuk_barang/delete/(:num)'] = 'gudang/crud_masuk_barang/delete/$1';
+
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

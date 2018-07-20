@@ -126,14 +126,144 @@ class Gudang extends CI_Controller
         }
     }
 
-    public function crud_master_supplier($action)
+    public function crud_master_supplier($action, $id = '')
     {
+        $this->load->model('model_supplier');
 
+        switch ($action) {
+            case 'tambah':
+                $this->load->view('Gudang_mst_supplier_tambah');
+                break;
+            case 'tambah_simpan':
+                $data = array(
+                    'nama_supplier' => $this->input->post('nama_supplier'),
+                    'alamat' => $this->input->post('alamat'),
+                    'telp' => $this->input->post('telp'),
+                );
+
+                if ($this->model_supplier->insert($data)) {
+                    $this->session->set_flashdata('berhasil', 'Data berhasil disimpan');
+                } else {
+                    $this->session->set_flashdata('gagal', 'Data gagal disimpan');
+                }
+
+                $this->crud_master_supplier('tambah');
+                break;
+            case 'edit':
+                if ($id == '') {
+                    redirect('gudang/master_supplier');
+                }
+
+                $member = $this->model_supplier->get($id);
+
+                $data['id_supplier'] = $member->id_supplier;
+                $data['nama_supplier'] = $member->nama_supplier;
+                $data['alamat'] = $member->alamat;
+                $data['telp'] = $member->telp;
+
+                $this->load->view('Gudang_mst_supplier_edit', $data);
+                break;
+            case 'edit_simpan':
+                $data = array(
+                    'id_supplier' => $this->input->post('id_supplier'),
+                    'nama_supplier' => $this->input->post('nama_supplier'),
+                    'alamat' => $this->input->post('alamat'),
+                    'telp' => $this->input->post('telp'),
+                );
+
+                if ($this->model_supplier->update($data)) {
+                    $this->session->set_flashdata('berhasil', 'Data berhasil disimpan');
+                } else {
+                    $this->session->set_flashdata('gagal', 'Data gagal disimpan');
+                }
+
+                $this->crud_master_supplier('edit', $data['id_supplier']);
+                break;
+
+            case 'delete':
+                if ($id == '') {
+                    redirect('gudang/master_supplier');
+                }
+
+                if ($this->model_supplier->delete($id)) {
+                    $this->session->set_flashdata('berhasil', 'Data berhasil dihapus');
+                } else {
+                    $this->session->set_flashdata('gagal', 'Data gagal dihapus');
+                }
+
+                redirect('gudang/master_supplier');
+                break;
+        }
     }
 
-    public function crud_masuk_berang()
+    public function crud_masuk_barang($action, $id = '')
     {
+        $this->load->model('model_brg_masuk');
 
+        switch ($action) {
+            case 'tambah':
+                $this->load->view('Gudang_masuk_barang_tambah');
+                break;
+            case 'tambah_simpan':
+                $data = array(
+                    'nama_supplier' => $this->input->post('nama_supplier'),
+                    'alamat' => $this->input->post('alamat'),
+                    'telp' => $this->input->post('telp'),
+                );
+
+                if ($this->model_brg_masuk->insert($data)) {
+                    $this->session->set_flashdata('berhasil', 'Data berhasil disimpan');
+                } else {
+                    $this->session->set_flashdata('gagal', 'Data gagal disimpan');
+                }
+
+                $this->crud_masuk_barang('tambah');
+                break;
+            case 'edit':
+                if ($id == '') {
+                    redirect('gudang/masuk_barang');
+                }
+
+                $member = $this->model_brg_masuk->get($id);
+
+                $data['id_supplier'] = $member->id_supplier;
+                $data['nama_supplier'] = $member->nama_supplier;
+                $data['alamat'] = $member->alamat;
+                $data['telp'] = $member->telp;
+
+                $this->load->view('Gudang_masuk_barang_edit', $data);
+                break;
+            case 'edit_simpan':
+                $data = array(
+                    'id_supplier' => $this->input->post('id_supplier'),
+                    'nama_supplier' => $this->input->post('nama_supplier'),
+                    'alamat' => $this->input->post('alamat'),
+                    'telp' => $this->input->post('telp'),
+                );
+
+                if ($this->model_brg_masuk->update($data)) {
+                    $this->session->set_flashdata('berhasil', 'Data berhasil disimpan');
+                } else {
+                    $this->session->set_flashdata('gagal', 'Data gagal disimpan');
+                }
+
+                $this->crud_masuk_barang('edit', $data['id_supplier']);
+                break;
+
+            case 'delete':
+                if ($id == '') {
+                    redirect('gudang/masuk_barang');
+                }
+
+                if ($this->model_brg_masuk->delete($id)) {
+                    $this->session->set_flashdata('berhasil', 'Data berhasil dihapus');
+                } else {
+                    $this->session->set_flashdata('gagal', 'Data gagal dihapus');
+                }
+
+                redirect('gudang/masuk_barang');
+                break;
+        }
     }
 
     public function crud_keluar_barang()

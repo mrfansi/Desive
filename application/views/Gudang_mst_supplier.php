@@ -48,8 +48,28 @@
                 </nav>
             </div>
             <div class="col-9 border-left pl-5">
-                <div class="mb-4">
-                    <button type="button" class="btn btn-outline-light btn-sm rounded-0">Tambah Barang</button>
+                <?php if (isset($_SESSION['berhasil'])): ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?= $_SESSION['berhasil']; ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (isset($_SESSION['gagal'])): ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <?= $_SESSION['gagal']; ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
+                <div class="mb-4 text-white">
+                    <p class="h2">Master Supplier</p>
+                    <a href="<?= site_url('gudang/master_supplier/tambah'); ?>"
+                       class="btn btn-outline-light btn-sm rounded-0">Tambah Data</a>
                 </div>
                 <!--<hr class="bg-white">-->
                 <table class="table table-sm text-white">
@@ -58,6 +78,7 @@
                         <th scope="col">Nama Supplier</th>
                         <th scope="col">Alamat</th>
                         <th scope="col">Telepon</th>
+                        <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -66,6 +87,12 @@
                             <td><?= $member->nama_supplier; ?></td>
                             <td><?= $member->alamat; ?></td>
                             <td><?= $member->telp; ?></td>
+                            <td>
+                                <a class="btn btn-primary btn-sm"
+                                   href="<?= site_url('gudang/master_supplier/edit/' . $member->id_supplier); ?>">Edit</a>
+                                <a class="btn btn-danger btn-sm"
+                                   href="<?= site_url('gudang/master_supplier/delete/' . $member->id_supplier); ?>">Hapus</a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                     </tbody>
