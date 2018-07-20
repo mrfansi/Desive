@@ -70,43 +70,47 @@
                 <div class="mb-4 text-white">
 
                     <p class="h2">Transaksi Masuk Barang</p>
-                    <p class="h5 text-muted">Tambah Data</p>
+                    <p class="h5 text-muted">Edit Data</p>
                     <a href="<?= site_url('gudang/masuk_barang'); ?>" class="btn btn-outline-light btn-sm rounded-0">Kembali
                         ke Menu Transaksi Masuk Barang</a>
 
                 </div>
 
-                <form action="tambah_simpan" method="post" class="col-8 text-white">
+                <form action="simpan" method="post" class="col-8 text-white">
+                    <input type="hidden" name="id_barang_m" value="<?= $id_barang_m; ?>">
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
                                 <label for="tgl_masuk">Tanggal Masuk</label>
                                 <input class="form-control" type="date" name="tgl_masuk" placeholder="Tanggal Masuk"
-                                       value="<?= date('Y-m-d'); ?>">
+                                       value="<?= $tgl_masuk; ?>">
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label for="kode_jenis">Kode Jenis</label>
-                                <input class="form-control" type="text" name="kode_jenis" placeholder="Kode Jenis">
+                                <input class="form-control" type="text" name="kode_jenis" placeholder="Kode Jenis"
+                                       value="<?= $kode_jenis; ?>">
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="nama_bahan">Nama Bahan</label>
-                        <input class="form-control" type="text" name="nama_bahan" placeholder="Nama Bahan">
+                        <input class="form-control" type="text" name="nama_bahan" placeholder="Nama Bahan"
+                               value="<?= $nama_bahan; ?>">
                     </div>
                     <div class="form-group">
                         <label for="jumlah">Jumlah</label>
-                        <input class="form-control" type="number" name="jumlah" placeholder="Jumlah">
+                        <input class="form-control" type="number" name="jumlah" placeholder="Jumlah"
+                               value="<?= $jumlah; ?>">
                     </div>
                     <div class="form-group">
                         <label for="id_supplier">Supplier</label>
                         <select class="form-control" name="id_supplier" id="id_supplier">
                             <option value="">Pilih Supplier</option>
                             <?php foreach ($suppliers as $s): ?>
-                                <option value="<?= $s->id_supplier; ?>"><?= $s->nama_supplier; ?></option>
+                                <option value="<?= $s->id_supplier; ?>" <?= $id_supplier == $s->id_supplier ? 'selected' : ''; ?>><?= $s->nama_supplier; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -115,7 +119,7 @@
                         <select class="form-control" name="id_user" id="id_user">
                             <option value="">Pilih User</option>
                             <?php foreach ($users as $u): ?>
-                                <option value="<?= $u->id_user; ?>"><?= $u->nama_user; ?></option>
+                                <option value="<?= $u->id_user; ?>" <?= $id_user == $u->id_user ? 'selected' : ''; ?>><?= $u->nama_user; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>

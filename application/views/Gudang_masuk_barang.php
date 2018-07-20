@@ -80,6 +80,7 @@
                         <th scope="col">Jumlah</th>
                         <th scope="col">Supplier</th>
                         <th scope="col">User</th>
+                        <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -91,6 +92,12 @@
                             <td><?= $member->jumlah; ?></td>
                             <td><?= $member->id_supplier; ?></td>
                             <td><?= $member->id_user; ?></td>
+                            <td>
+                                <a class="btn btn-primary btn-sm"
+                                   href="<?= site_url('gudang/masuk_barang/edit/' . $member->id_barang_m); ?>">Edit</a>
+                                <a class="btn btn-danger btn-sm"
+                                   href="<?= site_url('gudang/masuk_barang/delete/' . $member->id_barang_m); ?>">Hapus</a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                     </tbody>

@@ -228,12 +228,19 @@ class Gudang extends CI_Controller
                 $this->crud_masuk_barang('tambah');
                 break;
             case 'edit':
+                $this->load->model('model_supplier');
+                $this->load->model('model_user');
+
                 if ($id == '') {
                     redirect('gudang/masuk_barang');
                 }
 
                 $member = $this->model_brg_masuk->get($id);
 
+                $data['suppliers'] = $this->model_supplier->all()->result();
+                $data['users'] = $this->model_user->all()->result();
+
+                $data['id_barang_m'] = $member->id_barang_m;
                 $data['tgl_masuk'] = $member->tgl_masuk;
                 $data['kode_jenis'] = $member->kode_jenis;
                 $data['nama_bahan'] = $member->nama_bahan;
