@@ -48,39 +48,61 @@
                 </nav>
             </div>
             <div class="col-9 border-left pl-5">
+                <?php if (isset($_SESSION['berhasil'])): ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?= $_SESSION['berhasil']; ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (isset($_SESSION['gagal'])): ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <?= $_SESSION['gagal']; ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
                 <div class="mb-4 text-white">
+
                     <p class="h2">Master Barang</p>
-                    <a href="<?= site_url('gudang/master_barang/tambah'); ?>"
-                       class="btn btn-outline-light btn-sm rounded-0">Tambah Data</a>
+                    <p class="h5 text-muted">Edit Data</p>
+                    <a href="<?= site_url('gudang/master_barang'); ?>" class="btn btn-outline-light btn-sm rounded-0">Kembali
+                        ke Menu Master Barang</a>
+
                 </div>
-                <!--<hr class="bg-white">-->
-                <table class="table table-sm text-white">
-                    <thead>
-                    <tr>
-                        <th scope="col">Kode Jenis</th>
-                        <th scope="col">Nama Bahan</th>
-                        <th scope="col">Stok</th>
-                        <th scope="col">Min. Stok</th>
-                        <th scope="col"></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($members as $member): ?>
-                        <tr>
-                            <td><?= $member->kode_jenis; ?></td>
-                            <td><?= $member->nama_bahan; ?></td>
-                            <td><?= $member->stok; ?></td>
-                            <td><?= $member->min_stok; ?></td>
-                            <td>
-                                <a class="btn btn-primary btn-sm"
-                                   href="<?= site_url('gudang/master_barang/edit/' . $member->id_bahan); ?>">Edit</a>
-                                <a class="btn btn-danger btn-sm"
-                                   href="<?= site_url('gudang/master_barang/delete/' . $member->id_bahan); ?>">Hapus</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                    </tbody>
-                </table>
+
+                <form action="simpan" method="post" class="col-8 text-white">
+                    <input type="hidden" name="id_bahan" value="<?= $id_bahan; ?>">
+                    <div class="form-group">
+                        <label for="kode_jenis">Kode Jenis</label>
+                        <input class="form-control" type="text" name="kode_jenis" placeholder="Kode Jenis"
+                               value="<?= $kode_jenis; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="nama_bahan">Nama Bahan</label>
+                        <input class="form-control" type="text" name="nama_bahan" placeholder="Nama Bahan"
+                               value="<?= $nama_bahan; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="stok">Stok</label>
+                        <input class="form-control" type="number" name="stok" placeholder="Stok" value="<?= $stok; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="min_stok">Min. Stok</label>
+                        <input class="form-control" type="number" name="min_stok" placeholder="Min Stok"
+                               value="<?= $min_stok; ?>">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-outline-light btn-sm">Submit</button>
+                        <button type="reset" class="btn btn-outline-light btn-sm">Clear</button>
+
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>

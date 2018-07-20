@@ -33,41 +33,45 @@
     <div class="d-content">
         <div class="row text-left">
             <div class="col-2 mr-4">
-                <div class="nav flex-column nav-tabs border-0" id="v-pills-tab" role="tablist"
-                     aria-orientation="vertical">
-                    <a class="nav-link rounded-0 btn-outline-light" id="v-pills-profile-tab" data-toggle="pill"
-                       href="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
-                       aria-selected="false">Master Barang</a>
-                    <a class="nav-link rounded-0 btn-outline-light" id="v-pills-profile-tab" data-toggle="pill"
-                       href="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
-                       aria-selected="false">Master Supplier</a>
-                    <a class="nav-link rounded-0 btn-outline-light" id="v-pills-profile-tab" data-toggle="pill"
-                       href="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
-                       aria-selected="false">Input Barang Masuk</a>
-                    <a class="nav-link rounded-0 btn-outline-light" id="v-pills-messages-tab" data-toggle="pill"
-                       href="#v-pills-messages" role="tab" aria-controls="v-pills-messages"
-                       aria-selected="false">Input Barang Keluar</a>
-                    <a class="nav-link rounded-0 btn-outline-light" id="v-pills-messages-tab" data-toggle="pill"
-                       href="#v-pills-messages" role="tab" aria-controls="v-pills-messages"
-                       aria-selected="false">Input Retur Barang</a>
-                </div>
+                <nav class="nav flex-column">
+                    <a class="nav-link btn-outline-light" href="<?= site_url('gudang'); ?>">Home</a>
+                    <a class="nav-link btn-outline-light" href="<?= site_url('gudang/master_barang'); ?>">Master
+                        Barang</a>
+                    <a class="nav-link btn-outline-light" href="<?= site_url('gudang/master_supplier'); ?>">Master
+                        Supplier</a>
+                    <a class="nav-link btn-outline-light" href="<?= site_url('gudang/masuk_barang'); ?>">Input Masuk
+                        Barang</a>
+                    <a class="nav-link btn-outline-light active" href="<?= site_url('gudang/keluar_barang'); ?>">Input
+                        Keluar Barang</a>
+                    <a class="nav-link btn-outline-light" href="<?= site_url('gudang/retur_barang'); ?>">Input Retur
+                        Barang</a>
+                </nav>
             </div>
             <div class="col-9 border-left pl-5">
                 <div class="mb-4">
                     <button type="button" class="btn btn-outline-light btn-sm rounded-0">Tambah Barang</button>
                 </div>
                 <!--<hr class="bg-white">-->
-                <table class="table table-sm">
+                <table class="table table-sm text-white">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Tgl. Keluar</th>
+                        <th scope="col">Kode Jenis</th>
+                        <th scope="col">Nama Bahan</th>
+                        <th scope="col">Jumlah</th>
+                        <th scope="col">User</th>
                     </tr>
                     </thead>
                     <tbody>
-
+                    <?php foreach ($members as $member): ?>
+                        <tr>
+                            <td><?= $member->tgl_keluar; ?></td>
+                            <td><?= $member->kode_jenis; ?></td>
+                            <td><?= $member->nama_bahan; ?></td>
+                            <td><?= $member->jumlah; ?></td>
+                            <td><?= $member->id_user; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

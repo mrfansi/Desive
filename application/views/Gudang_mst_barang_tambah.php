@@ -34,8 +34,8 @@
         <div class="row text-left">
             <div class="col-2 mr-4">
                 <nav class="nav flex-column">
-                    <a class="nav-link btn-outline-light active" href="<?= site_url('gudang'); ?>">Home</a>
-                    <a class="nav-link btn-outline-light" href="<?= site_url('gudang/master_barang'); ?>">Master
+                    <a class="nav-link btn-outline-light" href="<?= site_url('gudang'); ?>">Home</a>
+                    <a class="nav-link btn-outline-light active" href="<?= site_url('gudang/master_barang'); ?>">Master
                         Barang</a>
                     <a class="nav-link btn-outline-light" href="<?= site_url('gudang/master_supplier'); ?>">Master
                         Supplier</a>
@@ -48,18 +48,57 @@
                 </nav>
             </div>
             <div class="col-9 border-left pl-5">
-                <div class="jumbotron">
-                    <h1 class="display-4">Hello, world!</h1>
-                    <p class="lead">Selamat datang diprogram buatan untuk syarat nilai Tugas Kelompok pada mata kuliah
-                        <b>Web Enterprise</b></p>
-                    <hr class="my-4">
-                    <p>Adapun nama - nama yang terlibat dalam pembuatan program ini adalah : </p>
-                    <p>
-                    <ul>
-                        <li>Muhammad Irfan (41815110165) as Developer</li>
-                    </ul>
-                    </p>
+                <?php if (isset($_SESSION['berhasil'])): ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?= $_SESSION['berhasil']; ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (isset($_SESSION['gagal'])): ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <?= $_SESSION['gagal']; ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
+                <div class="mb-4 text-white">
+
+                    <p class="h2">Master Barang</p>
+                    <p class="h5 text-muted">Tambah Data</p>
+                    <a href="<?= site_url('gudang/master_barang'); ?>" class="btn btn-outline-light btn-sm rounded-0">Kembali
+                        ke Menu Master Barang</a>
+
                 </div>
+
+                <form action="tambah_simpan" method="post" class="col-8 text-white">
+                    <div class="form-group">
+                        <label for="kode_jenis">Kode Jenis</label>
+                        <input class="form-control" type="text" name="kode_jenis" placeholder="Kode Jenis">
+                    </div>
+                    <div class="form-group">
+                        <label for="nama_bahan">Nama Bahan</label>
+                        <input class="form-control" type="text" name="nama_bahan" placeholder="Nama Bahan">
+                    </div>
+                    <div class="form-group">
+                        <label for="stok">Stok</label>
+                        <input class="form-control" type="number" name="stok" placeholder="Stok">
+                    </div>
+                    <div class="form-group">
+                        <label for="min_stok">Min. Stok</label>
+                        <input class="form-control" type="number" name="min_stok" placeholder="Min Stok">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-outline-light btn-sm">Submit</button>
+                        <button type="reset" class="btn btn-outline-light btn-sm">Clear</button>
+
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
